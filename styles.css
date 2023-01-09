@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: content-box;
+}
+
+body {
+  font-family: sans-serif;
+  height: 100vh;
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sideBar{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+}
+.setGridSize {
+  align-self: flex-start;
+  left: 0;
+  top: 0;
+  margin: 30px;
+  padding: 30px;
+  width:max-content;
+}
+.helpText {
+  color: white;
+  padding: 20px;
+  flex: 0 1 auto;
+}
+
+.container {
+  background-color: white;
+  max-width: 960px;
+  min-width: 960px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.passed {
+  background-color: dimgrey;
+}
