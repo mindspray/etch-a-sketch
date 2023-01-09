@@ -1,8 +1,9 @@
 'use strict';
+// This is an Etch-A-Sketch style app that "draws" onto divs over which the mouse traverses.
 
+// This creates the game board and makes it active
 function createDivGrid(sideLength = 50) {
-  if (sideLength > 100) sideLength = 100;
-  else if (!sideLength || sideLength < 4) sideLength = 4;
+  sideLength = Math.min(Math.max(sideLength, 4), 100);
 
   let totalDivs = sideLength * sideLength;
   let pixels = [];
@@ -16,7 +17,6 @@ function createDivGrid(sideLength = 50) {
   switchColorBtn.addEventListener("click", ()=> switchColor = !switchColor);
   
   body.addEventListener('click', (e) => {
-    console.log(e.target);
     if (e.target.className === "sideBar") clearGrid();
     });
     pixels.forEach((element) => {
@@ -28,7 +28,7 @@ function createDivGrid(sideLength = 50) {
         if (switchColor) {
           element.style.setProperty("background-color", `hsl(0, 0%, ${color-=10}%)`);
         } else {
-          element.style.setProperty("background-color", `hsl(${random(353)}, ${random(101)}%, ${random(101)}%`);
+          element.style.setProperty("background-color", `hsl(${getRandom(352)}, ${getRandom(100)}%, ${getRandom(100)}%`);
         }
       });
 
@@ -37,8 +37,9 @@ function createDivGrid(sideLength = 50) {
   });
 }
 
-function random(num) {
-  return Math.floor(Math.random() * num);
+// Get a random number between 0 and the number entered, inclusive
+function getRandom(num) {
+  return Math.floor(Math.random() * (num + 1));
 }
 
 function clearGrid() {
@@ -47,7 +48,7 @@ function clearGrid() {
 }
 
 function setGridSize() {
-  createDivGrid(50);
+  createDivGrid();
   let button = document.querySelector('.setGridSize');
   let container = document.querySelector('.container');
   button.addEventListener('click', () => {
